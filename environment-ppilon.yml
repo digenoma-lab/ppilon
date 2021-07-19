@@ -1,0 +1,10 @@
+name: quality-assembly-tools
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - pilon
+  - bwa-mem
+  - bwa-mem2
+  - samtools
