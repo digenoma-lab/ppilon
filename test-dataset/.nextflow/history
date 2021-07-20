@@ -1,0 +1,8 @@
+2021-07-20 01:57:41	-	extravagant_golick	-	b9b83c0e21408a290d33a8118338a090	872f1ecb-18d3-4eb9-8c11-d9597fa5725a	nextflow run ../main.nf
+2021-07-20 01:57:56	-	focused_mahavira	-	b9b83c0e21408a290d33a8118338a090	c1a40084-6a41-4efe-a201-7efafabe5a71	nextflow run ../main.nf --help
+2021-07-20 01:58:31	-	infallible_galileo	-	b815766bcd37defc38b3117b8e26f3b7	78ee1a14-05c3-4e94-be8e-55b52e717fc3	nextflow run ../main.nf --help
+2021-07-20 01:59:48	-	thirsty_meitner	-	b815766bcd37defc38b3117b8e26f3b7	c6ef71b9-8dd8-4e8d-b525-f6c62daf14b5	nextflow run ../main.nf --reads test.r1.fq.gz test.r2.fq.gz --fasta test.fasta
+2021-07-20 02:00:56	3.9s	small_yalow	ERR	b815766bcd37defc38b3117b8e26f3b7	66550e23-c43c-45a0-bf30-b80aebd5909d	nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta
+2021-07-20 02:02:06	3.9s	confident_waddington	OK	308bfbee819602df0536f9eedad46a2e	5352d97e-c7bc-4dc6-9d26-93b73bde7828	nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta
+2021-07-20 02:12:30	11.6s	goofy_ritchie	OK	13d6e4be0e4a80b07f56cb6d2592600d	498294f3-2383-4307-afe2-042ec681db21	nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta
+2021-07-20 02:15:06	11.2s	tiny_bartik	OK	c4ceb81e54711ce4732b27a28eecd79f	8260b09c-791d-40c1-b2d2-b6d6a8d83f1b	nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta --outdir run2

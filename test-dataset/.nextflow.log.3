@@ -1,0 +1,107 @@
+Jul-20 02:00:55.851 [main] DEBUG nextflow.cli.Launcher - $> nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta
+Jul-20 02:00:55.995 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.2
+Jul-20 02:00:56.035 [main] INFO  nextflow.cli.CmdRun - Launching `../main.nf` [small_yalow] - revision: b815766bcd
+Jul-20 02:00:56.219 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/cmoraga/.nextflow/plugins
+Jul-20 02:00:56.229 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 02:00:56.231 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jul-20 02:00:56.242 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 02:00:56.243 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 02:00:56.248 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-20 02:00:56.281 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 02:00:56.361 [main] DEBUG nextflow.Session - Session uuid: 66550e23-c43c-45a0-bf30-b80aebd5909d
+Jul-20 02:00:56.361 [main] DEBUG nextflow.Session - Run name: small_yalow
+Jul-20 02:00:56.367 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-20 02:00:56.444 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.2 build 5558
+  Created: 12-07-2021 07:54 UTC (09:54 CEST)
+  System: Mac OS X 11.2
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.11+9
+  Encoding: UTF-8 (UTF-8)
+  Process: 70199@Carols-Air [192.168.1.75]
+  CPUs: 8 - Mem: 16 GB (21 MB) - Swap: 4 GB (1.4 GB)
+Jul-20 02:00:56.467 [main] DEBUG nextflow.Session - Work-dir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work [Mac OS X]
+Jul-20 02:00:56.468 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/cmoraga/Desktop/containers/ppilon/bin
+Jul-20 02:00:56.481 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 02:00:56.513 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 02:00:56.641 [main] DEBUG nextflow.Session - Session start invoked
+Jul-20 02:00:58.215 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 02:00:58.231 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bwa_mapping, build_bwa_index
+Jul-20 02:00:58.232 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `help` -- Initialise it to a default value eg. `params.help = some_value`
+Jul-20 02:00:58.656 [main] INFO  nextflow.Nextflow - 
+        nextflow pipeline for polishing with pilon (null)
+        
+Jul-20 02:00:58.684 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: test.r{1,2}.fq.gz; options: [:]
+Jul-20 02:00:58.821 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `outdir` -- Initialise it to a default value eg. `params.outdir = some_value`
+Jul-20 02:00:58.860 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 02:00:58.860 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 02:00:58.867 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-20 02:00:58.874 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=16 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-20 02:00:59.114 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 02:00:59.115 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 02:00:59.175 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-20 02:00:59.175 [main] DEBUG nextflow.Session - Session await
+Jul-20 02:00:59.379 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 02:00:59.385 [Task submitter] INFO  nextflow.Session - [8c/4d9e81] Submitted process > build_bwa_index (bwa-index)
+Jul-20 02:00:59.544 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: build_bwa_index (bwa-index); status: COMPLETED; exit: 0; error: -; workDir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work/8c/4d9e81e2dd828b4393ecafdffae2c2]
+Jul-20 02:00:59.636 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'build_bwa_index (bwa-index)'
+
+Caused by:
+  Target path for directive publishDir cannot be null
+
+java.lang.IllegalStateException: Target path for directive publishDir cannot be null
+	at nextflow.processor.PublishDir.apply(PublishDir.groovy:201)
+	at nextflow.processor.PublishDir$apply.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+	at nextflow.processor.TaskProcessor.publishOutputs0(TaskProcessor.groovy:1266)
+	at nextflow.processor.TaskProcessor.publishOutputs(TaskProcessor.groovy:1241)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:193)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:61)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at nextflow.processor.TaskProcessor.finalizeTask0(TaskProcessor.groovy:2127)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:193)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:61)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at nextflow.processor.TaskProcessor.finalizeTask(TaskProcessor.groovy:2098)
+	at nextflow.processor.TaskPollingMonitor.checkTaskStatus(TaskPollingMonitor.groovy:616)
+	at nextflow.processor.TaskPollingMonitor.checkAllTasks(TaskPollingMonitor.groovy:534)
+	at nextflow.processor.TaskPollingMonitor.pollLoop(TaskPollingMonitor.groovy:409)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:1029)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:1012)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:101)
+	at nextflow.processor.TaskPollingMonitor$_start_closure2.doCall(TaskPollingMonitor.groovy:293)
+	at nextflow.processor.TaskPollingMonitor$_start_closure2.call(TaskPollingMonitor.groovy)
+	at groovy.lang.Closure.run(Closure.java:493)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Jul-20 02:00:59.661 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 02:00:59.661 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Target path for directive publishDir cannot be null
+Jul-20 02:00:59.664 [Task submitter] INFO  nextflow.Session - [03/ad9768] Submitted process > bwa_mapping (test.r)
+Jul-20 02:00:59.731 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-20 02:00:59.731 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-20 02:00:59.743 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (1)
+Jul-20 02:00:59.772 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=1; runningCount=1; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=1; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jul-20 02:00:59.880 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jul-20 02:00:59.894 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

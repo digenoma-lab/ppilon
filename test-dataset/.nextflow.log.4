@@ -1,0 +1,34 @@
+Jul-20 01:59:48.205 [main] DEBUG nextflow.cli.Launcher - $> nextflow run ../main.nf --reads test.r1.fq.gz test.r2.fq.gz --fasta test.fasta
+Jul-20 01:59:48.366 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.2
+Jul-20 01:59:48.402 [main] INFO  nextflow.cli.CmdRun - Launching `../main.nf` [thirsty_meitner] - revision: b815766bcd
+Jul-20 01:59:48.576 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/cmoraga/.nextflow/plugins
+Jul-20 01:59:48.579 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 01:59:48.581 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jul-20 01:59:48.596 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 01:59:48.597 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 01:59:48.604 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-20 01:59:48.641 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 01:59:48.761 [main] DEBUG nextflow.Session - Session uuid: c6ef71b9-8dd8-4e8d-b525-f6c62daf14b5
+Jul-20 01:59:48.761 [main] DEBUG nextflow.Session - Run name: thirsty_meitner
+Jul-20 01:59:48.770 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-20 01:59:48.839 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.2 build 5558
+  Created: 12-07-2021 07:54 UTC (09:54 CEST)
+  System: Mac OS X 11.2
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.11+9
+  Encoding: UTF-8 (UTF-8)
+  Process: 70163@Carols-Air [192.168.1.75]
+  CPUs: 8 - Mem: 16 GB (48 MB) - Swap: 4 GB (1.4 GB)
+Jul-20 01:59:48.870 [main] DEBUG nextflow.Session - Work-dir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work [Mac OS X]
+Jul-20 01:59:48.870 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/cmoraga/Desktop/containers/ppilon/bin
+Jul-20 01:59:48.885 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 01:59:48.914 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 01:59:49.038 [main] DEBUG nextflow.Session - Session start invoked
+Jul-20 01:59:50.479 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 01:59:50.494 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bwa_mapping, build_bwa_index
+Jul-20 01:59:50.496 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `help` -- Initialise it to a default value eg. `params.help = some_value`
+Jul-20 01:59:50.838 [main] INFO  nextflow.Nextflow - 
+        nextflow pipeline for polishing with pilon (null)
+        
+Jul-20 01:59:50.947 [Actor Thread 2] ERROR nextflow.Nextflow - Cannot find any reads matching: test.r1.fq.gz
+NB: Path needs to be enclosed in quotes!

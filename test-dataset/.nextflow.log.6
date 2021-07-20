@@ -1,0 +1,48 @@
+Jul-20 01:57:55.643 [main] DEBUG nextflow.cli.Launcher - $> nextflow run ../main.nf --help
+Jul-20 01:57:55.772 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.2
+Jul-20 01:57:55.797 [main] INFO  nextflow.cli.CmdRun - Launching `../main.nf` [focused_mahavira] - revision: b9b83c0e21
+Jul-20 01:57:55.950 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/cmoraga/.nextflow/plugins
+Jul-20 01:57:55.952 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 01:57:55.954 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jul-20 01:57:55.967 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 01:57:55.968 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 01:57:55.972 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-20 01:57:56.010 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 01:57:56.122 [main] DEBUG nextflow.Session - Session uuid: c1a40084-6a41-4efe-a201-7efafabe5a71
+Jul-20 01:57:56.122 [main] DEBUG nextflow.Session - Run name: focused_mahavira
+Jul-20 01:57:56.129 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-20 01:57:56.226 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.2 build 5558
+  Created: 12-07-2021 07:54 UTC (09:54 CEST)
+  System: Mac OS X 11.2
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.11+9
+  Encoding: UTF-8 (UTF-8)
+  Process: 70092@Carols-Air [192.168.1.75]
+  CPUs: 8 - Mem: 16 GB (35.7 MB) - Swap: 4 GB (1.4 GB)
+Jul-20 01:57:56.267 [main] DEBUG nextflow.Session - Work-dir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work [Mac OS X]
+Jul-20 01:57:56.268 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/cmoraga/Desktop/containers/ppilon/bin
+Jul-20 01:57:56.285 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 01:57:56.317 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 01:57:56.455 [main] DEBUG nextflow.Session - Session start invoked
+Jul-20 01:57:57.820 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 01:57:57.832 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bwa_mapping, build_bwa_index
+Jul-20 01:57:57.865 [main] DEBUG nextflow.Session - Session aborted -- Cause: No signature of method: Script_a9205eed.IARC_Header() is applicable for argument types: () values: []
+Possible solutions: tool_header()
+Jul-20 01:57:57.946 [main] ERROR nextflow.cli.Launcher - @unknown
+groovy.lang.MissingMethodException: No signature of method: Script_a9205eed.IARC_Header() is applicable for argument types: () values: []
+Possible solutions: tool_header()
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:70)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.callCurrent(PogoMetaClassSite.java:80)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:176)
+	at Script_a9205eed.show_help(Script_a9205eed:6)
+	at Script_a9205eed.runScript(Script_a9205eed:36)
+	at nextflow.script.BaseScript.runDsl1(BaseScript.groovy:164)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:200)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:221)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:212)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:120)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:302)
+	at nextflow.cli.Launcher.run(Launcher.groovy:475)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)

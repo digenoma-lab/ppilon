@@ -1,0 +1,53 @@
+Jul-20 02:15:05.769 [main] DEBUG nextflow.cli.Launcher - $> nextflow run ../main.nf --reads 'test.r{1,2}.fq.gz' --fasta test.fasta --outdir run2
+Jul-20 02:15:05.951 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.2
+Jul-20 02:15:05.983 [main] INFO  nextflow.cli.CmdRun - Launching `../main.nf` [tiny_bartik] - revision: c4ceb81e54
+Jul-20 02:15:06.132 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/cmoraga/.nextflow/plugins
+Jul-20 02:15:06.136 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 02:15:06.138 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jul-20 02:15:06.149 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 02:15:06.150 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 02:15:06.154 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-20 02:15:06.185 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 02:15:06.252 [main] DEBUG nextflow.Session - Session uuid: 8260b09c-791d-40c1-b2d2-b6d6a8d83f1b
+Jul-20 02:15:06.252 [main] DEBUG nextflow.Session - Run name: tiny_bartik
+Jul-20 02:15:06.256 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-20 02:15:06.354 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.2 build 5558
+  Created: 12-07-2021 07:54 UTC (09:54 CEST)
+  System: Mac OS X 11.2
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.11+9
+  Encoding: UTF-8 (UTF-8)
+  Process: 70577@Carols-Air [192.168.1.75]
+  CPUs: 8 - Mem: 16 GB (115 MB) - Swap: 4 GB (1.3 GB)
+Jul-20 02:15:06.385 [main] DEBUG nextflow.Session - Work-dir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work [Mac OS X]
+Jul-20 02:15:06.386 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/cmoraga/Desktop/containers/ppilon/bin
+Jul-20 02:15:06.399 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 02:15:06.430 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 02:15:06.560 [main] DEBUG nextflow.Session - Session start invoked
+Jul-20 02:15:08.135 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 02:15:08.148 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bwa_mapping, build_bwa_index
+Jul-20 02:15:08.152 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `help` -- Initialise it to a default value eg. `params.help = some_value`
+Jul-20 02:15:08.508 [main] INFO  nextflow.Nextflow - 
+        nextflow pipeline for polishing with pilon (null)
+        
+Jul-20 02:15:08.529 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: test.r{1,2}.fq.gz; options: [:]
+Jul-20 02:15:08.702 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 02:15:08.702 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 02:15:08.715 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-20 02:15:08.724 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=16 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-20 02:15:08.923 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-20 02:15:08.925 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-20 02:15:08.962 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-20 02:15:08.963 [main] DEBUG nextflow.Session - Session await
+Jul-20 02:15:09.176 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 02:15:09.182 [Task submitter] INFO  nextflow.Session - [5e/c46513] Submitted process > build_bwa_index (bwa-index)
+Jul-20 02:15:09.304 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: build_bwa_index (bwa-index); status: COMPLETED; exit: 0; error: -; workDir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work/5e/c4651357518229e714db5281f034fc]
+Jul-20 02:15:09.371 [Task monitor] DEBUG n.util.BlockingThreadExecutorFactory - Thread pool name=FileTransfer; maxThreads=24; maxQueueSize=72; keepAlive=1m
+Jul-20 02:15:09.404 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-20 02:15:09.406 [Task submitter] INFO  nextflow.Session - [a5/c4c8af] Submitted process > bwa_mapping (test.r)
+Jul-20 02:15:17.051 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: bwa_mapping (test.r); status: COMPLETED; exit: 0; error: -; workDir: /Users/cmoraga/Desktop/containers/ppilon/test-dataset/work/a5/c4c8af2bd00c05f188a9227721494a]
+Jul-20 02:15:17.111 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-20 02:15:17.126 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-20 02:15:17.149 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=2; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=7.6s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jul-20 02:15:17.198 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jul-20 02:15:17.218 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
