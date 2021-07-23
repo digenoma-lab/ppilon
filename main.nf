@@ -11,7 +11,7 @@ def show_help (){
 
     The typical command for running the pipeline is as follows:
 
-    nextflow run iarc/nf-gene-fusions --reads '*_R{1,2}.fastq.gz'  -profile singularity
+    nextflow run main.nf --reads '*_R{1,2}.fastq.gz'  -profile singularity
 
     Mandatory arguments:
       --reads [file]                Path to input data
@@ -32,6 +32,9 @@ def show_help (){
 
 // we star coding the pipeline
 params.outdir="results"
+params.nsplit=200
+params.help = null
+
 // Show help message
 if (params.help) exit 0, show_help()
 
@@ -52,7 +55,7 @@ log.info tool_header()
     //expect a regular expresion like '*_{1,2}.fastq.gz'
     Channel.fromFilePairs(params.reads, size: 2 )
         .ifEmpty{exit 1, "Cannot find any reads matching: ${params.reads}\nNB: Path needs to be enclosed in quotes!" }
-        .set{read_files_pilon}
+        .into{read_files_pilon; test_channel}
 
 
 /*
@@ -102,14 +105,16 @@ process bwa_mapping{
 
   output:
       //star bam files
-      set val(sample), file("${sample}_bwa.bam") into bwa_bam
-      set val(sample), file("${sample}_bwa.bam.bai") into bwa_bam_index
+      set val(sample), file("${sample}_bwa.bam"), file("${sample}_bwa.bam.bai") into bwa_bam
+      //set val(sample),  into bwa_bam_index
       //star mapping stats and gene counts *.{tsv,txt}
+      file("${fasta}.fai") into ch_fai
 
   script:
   """
   bwa mem -t 8 ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
   samtools index ${sample}_bwa.bam
+  samtools faidx ${fasta}
   """
   /*
   #The STAR gene counts coincide with those produced by htseq-count with default parameters.
@@ -119,6 +124,59 @@ process bwa_mapping{
   #column 3: counts for the 1st read strand aligned with RNA (htseq-count option -s yes)
   #column 4: counts for the 2nd read strand aligned with RNA (htseq-count option -s reverse
   */
+}
+
+process split_contigs {
+    //tag "${fastaFai}"
+    //tag "split_contigs"
+    tag "${fastaFai}"
+    publishDir params.outdir+"/parts", mode: 'copy'
+
+    input:
+        //file(fasta) from ch_fasta
+        file(fastaFai) from ch_fai
+
+    output:
+        //file '*.targetlist' into split_parts
+        file '*.targetlist' into split_parts mode flatten
+
+    script:
+    """
+    perl ${baseDir}/split-faix.pl ${fastaFai} ${params.nsplit}
+
+    """
+}
+
+
+//we combine the splitted part with bwa_mem
+split_beds=bwa_bam.combine(split_parts)
+//split_beds.view()
+
+
+process pilon {
+    tag "${sample}-${targetfiles}"
+
+    publishDir params.outdir+"/pilon", mode: 'copy'
+
+    input:
+        set val(sample), file(frag),file(index), file(targetfiles) from split_beds
+        file(fasta) from ch_fasta
+
+    output:
+       //file(targetfiles.basename+".polish.fa") into pilon_out
+      file("${targetfiles.baseName}.pilon.fa") into pilon_out
+
+
+    //when: (!params.no_intervals) && step != 'annotate'
+
+    script:
+    bed_tag = targetfiles.baseName
+    """
+    echo java -jar pilon-1.24.jar --genome ${fasta} --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
+    touch ${bed_tag}.pilon.fa
+
+    """
+
 }
 
 
