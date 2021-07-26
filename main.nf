@@ -26,6 +26,7 @@ def show_help (){
       --bwa                       default: bwa-mem2
                                   optional: bwa
 
+
       Test run:
 
       nextflow run  ppilon/main.nf --reads 'test_dataset/reads/*.R{1,2}.fastq.gz' --fasta test_dataset/genome.fa
@@ -38,6 +39,7 @@ params.outdir="results"
 params.nsplit=200
 params.help = null
 params.bwa="bwa-mem2"
+params.cpu=20
 
 // Show help message
 if (params.help) exit 0, show_help()
@@ -116,7 +118,7 @@ process bwa_mapping{
 
   script:
   """
-  ${params.bwa} mem -t 8 ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
+  ${params.bwa} mem -t ${params.cpu} ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
   samtools index ${sample}_bwa.bam
   samtools faidx ${fasta}
   """
@@ -168,7 +170,7 @@ process pilon {
 
     output:
        //file(targetfiles.basename+".polish.fa") into pilon_out
-      file("${targetfiles.baseName}.pilon.fa") into pilon_out
+      file("${targetfiles.baseName}.pilon.fasta") into pilon_out
 
 
     //when: (!params.no_intervals) && step != 'annotate'

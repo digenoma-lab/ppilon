@@ -20,9 +20,15 @@ my $maxsize=int($totall/$n);
 my $group=1;
 my $acu=0;
 open (TT,">pp-$group.targetlist");
-
+if($n==1){
+  foreach my $c(@contigs){
+      print TT $c->{contig}."\n";
+  }
+}
+else{
 foreach my $c(@contigs){
   $acu+=$c->{length};
+
   if($acu<$maxsize){
       #print join ("\t", $c->{contig}, $c->{length}, $acu, $group)."\n";
       print TT $c->{contig}."\n";
@@ -39,4 +45,6 @@ foreach my $c(@contigs){
 
 
 }
+}
+
 close TT;
