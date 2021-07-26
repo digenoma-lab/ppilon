@@ -100,7 +100,9 @@ ch_bwa_index = ch_bwa_index.dump(tag:'ch_bwa_index')
 
 process bwa_mapping{
   tag "${sample}"
-
+  cpus params.cpu
+  memory '40 GB'
+  
   //we can remove this to don't keep the bam files
   publishDir "${params.outdir}/bwa_mapping", mode: 'copy'
 
@@ -161,6 +163,7 @@ split_beds=bwa_bam.combine(split_parts)
 
 process pilon {
     tag "${sample}-${targetfiles}"
+    memory '5 GB'
 
     publishDir params.outdir+"/pilon", mode: 'copy'
 
