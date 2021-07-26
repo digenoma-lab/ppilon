@@ -5,6 +5,6 @@ channels:
   - defaults
 dependencies:
   - pilon
-  - bwa-mem
+  - bwa
   - bwa-mem2
   - samtools
