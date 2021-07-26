@@ -70,7 +70,7 @@ log.info tool_header()
 
 process build_bwa_index {
     tag "bwa-index"
-    memory '30 GB'
+    memory '100 GB'
     publishDir params.outdir, mode: 'copy'
 
     input:
