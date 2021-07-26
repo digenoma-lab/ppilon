@@ -70,7 +70,7 @@ log.info tool_header()
 
 process build_bwa_index {
     tag "bwa-index"
-
+    memory '30 GB'
     publishDir params.outdir, mode: 'copy'
 
     input:
@@ -102,7 +102,7 @@ process bwa_mapping{
   tag "${sample}"
   cpus params.cpu
   memory '40 GB'
-  
+
   //we can remove this to don't keep the bam files
   publishDir "${params.outdir}/bwa_mapping", mode: 'copy'
 
