@@ -21,6 +21,7 @@ MAINTAINER Carol Moraga <camoragaq@gmail.com>
 #polishing tools
 COPY environment-ppilon.yml /
 RUN conda env create -n ppilon -f /environment-ppilon.yml && conda clean -a
-ENV PATH /miniconda/envs/ppilon/bin:$PATH
-
+#ENV PATH /miniconda/envs/ppilon/bin:$PATH #env ubuntu
+#ENV for nfcore-base
+ENV PATH /opt/conda/envs/ppilon/bin:$PATH
 

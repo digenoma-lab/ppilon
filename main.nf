@@ -23,6 +23,9 @@ def show_help (){
       -profile [str]              Configuration profile to use.
                                   Available: singularity
 
+      --bwa                       default: bwa-mem2
+                                  optional: bwa
+
       Test run:
 
       nextflow run  ppilon/main.nf --reads 'test_dataset/reads/*.R{1,2}.fastq.gz' --fasta test_dataset/genome.fa
@@ -34,6 +37,7 @@ def show_help (){
 params.outdir="results"
 params.nsplit=200
 params.help = null
+params.bwa="bwa-mem2"
 
 // Show help message
 if (params.help) exit 0, show_help()
@@ -81,7 +85,7 @@ process build_bwa_index {
     //def opt_test = params.test ? "--genomeSAindexNbases 8" : ''
     """
 
-    bwa index ${fasta}
+    ${params.bwa} index ${fasta}
 
     """
 }
@@ -112,7 +116,7 @@ process bwa_mapping{
 
   script:
   """
-  bwa mem -t 8 ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
+  ${params.bwa} mem -t 8 ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
   samtools index ${sample}_bwa.bam
   samtools faidx ${fasta}
   """
@@ -172,9 +176,9 @@ process pilon {
     script:
     bed_tag = targetfiles.baseName
     """
-    echo java -jar pilon-1.24.jar --genome ${fasta} --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
-    touch ${bed_tag}.pilon.fa
-
+    #echo java -jar pilon-1.24.jar --genome ${fasta} --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
+    #touch ${bed_tag}.pilon.fa
+    pilon --genome ${fasta} --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
     """
 
 }
