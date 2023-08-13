@@ -86,14 +86,14 @@ process bwa_mapping {
   script:
   if(params.debug){
   """
-  echo ${params.bwa} mem -t ${params.cpu} ${fasta} ${reads}  samtools sort -@8 -o ${sample}_bwa.bam -
+  echo ${params.bwa} mem -t ${task.cpus} ${fasta} ${reads}  samtools sort -@8 -o ${sample}_bwa.bam -
   echo samtools index ${sample}_bwa.bam
   echo samtools faidx ${fasta}
   touch ${sample}_bwa.bam ${sample}_bwa.bam.bai ${fasta}.fai
   """
   }else{
   """
-  ${params.bwa} mem -t ${params.cpu} ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
+  ${params.bwa} mem -t ${tast.cpus} ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
   samtools index ${sample}_bwa.bam
   samtools faidx ${fasta}
   """
