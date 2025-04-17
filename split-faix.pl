@@ -17,6 +17,7 @@ while(my $line=<FILE>){
 close (FILE);
 #print $totall/$n;
 my $maxsize=int($totall/$n);
+print "MS=$maxsize\n";
 my $group=1;
 my $acu=0;
 open (TT,">pp-$group.targetlist");
@@ -24,13 +25,18 @@ if($n==1){
   foreach my $c(@contigs){
       print TT $c->{contig}."\n";
   }
-}
-else{
+}elsif(scalar(@contigs) == 1){
+
+  foreach my $c(@contigs){
+      print TT $c->{contig}."\n";
+  }
+
+}else{
 foreach my $c(@contigs){
   $acu+=$c->{length};
 
-  if($acu<$maxsize){
-      #print join ("\t", $c->{contig}, $c->{length}, $acu, $group)."\n";
+  if($acu<=$maxsize){
+	  #      print join ("\t", $c->{contig}, $c->{length}, $acu, $group)."\n";
       print TT $c->{contig}."\n";
   }
   else{

@@ -93,7 +93,7 @@ process bwa_mapping {
   """
   }else{
   """
-  ${params.bwa} mem -t ${tast.cpus} ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
+  ${params.bwa} mem -t ${task.cpus} ${fasta} ${reads} | samtools sort -@8 -o ${sample}_bwa.bam -
   samtools index ${sample}_bwa.bam
   samtools faidx ${fasta}
   """
@@ -150,7 +150,10 @@ process pilon {
     """
     }else{
     """
-    pilon --genome ${fasta} --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
+    
+    export _JAVA_OPTIONS="${params.pilon_java}"
+    samtools faidx ${fasta} -r ${targetfiles}  > ${targetfiles}.fa
+    pilon --genome ${targetfiles}.fa --frags ${frag} --targets ${targetfiles} --output ${bed_tag}.pilon
     """
     }
 }
